@@ -13,6 +13,25 @@ view: users {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: full_name {
+    type: string
+    sql: CONCAT(CONCAT(${first_name},' '), ${last_name}) ;;
+  }
+dimension: length_full_name {
+  type: number
+  sql: LENGTH(${full_name}) ;;
+}
+dimension: age_tier {
+  type: tier
+  sql: ${age} ;;
+  tiers: [1, 10, 20,30,40,50,60,70,80,90,100]
+}
+measure: average_user_age {
+  type: average
+  sql: ${age} ;;
+}
+
+
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Age" in Explore.

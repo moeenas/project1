@@ -60,6 +60,7 @@ value_format: "$0.00"
   measure: total_sale_price {
     type: sum
     sql: ${sale_price} ;;
+    hidden: yes
   }
 
   measure: average_sale_price {
